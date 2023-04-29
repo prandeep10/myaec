@@ -1,0 +1,46 @@
+.events-section{
+    margin-top: 100px;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.event {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.event img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+.event h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: normal;
+}
+.event p {
+    margin: 10px 0 0 0;
+    font-size: 16px;
+}
+.event .date {
+    margin-left: auto;
+    font-size: 18px;
+    font-weight: bold;
+}
+.upcoming {
+    background-color: #f0f0f0;
+}
+.upcoming h2 {
+    color: #999;
+}

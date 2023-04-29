@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyAEC</title>
+
+    <!-- Custom CSS  -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/feed.css">
+    <link rel="stylesheet" href="assets/css/friends.css">
+
+    <!-- FontAwesome CDN  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Alpine JS CDN  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <h1>MyAEC</h1>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="feed.html">Feed</a></li>
+                    <li><a href="friends.html">Friends</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="showcase.html">Showcase</a></li>
+                </ul>
+            </div>
+
+            <div class="buttons">
+
+              
+
+    
+<div class="search-bar">
+  <form action="">
+   <input type="text" name="" id="" placeholder="Search By Name, Batch, Branch">
+   <input type="submit" name="" id="" value="Search">
+  </form>
+</div>
+              
+
+            </div>
+
+         
+        </nav>
+
+       
+    </header>
+
+
+<section class="friends-section">
+<h2>Your Friends</h2>
+
+<div class="profile-card-container">
+
+
+
+<div class="profile-card">
+  <img src="assets/images/avatar.webp" alt="">
+  <div class="name">John Doe <div class="desc">ETE, 2021-2025</div></div>
+  
+  <button class="btn-primary"><a href="">View Profile</a></button>
+</div>
+
+
+
+<div class="profile-card">
+  <img src="assets/images/avatar.webp" alt="">
+  <div class="name">John Doe</div>
+  <div class="desc">ETE, 2021-2025</div>
+  <button class="btn-primary"><a href="">View Profile</a></button>
+</div>
+
+
+
+<div class="profile-card">
+  <img src="assets/images/avatar.webp" alt="">
+  <div class="name">John Doe</div>
+  <div class="desc">ETE, 2021-2025</div>
+  <button class="btn-primary"><a href="">View Profile</a></button>
+</div>
+
+
+
+<div class="profile-card">
+  <img src="assets/images/avatar.webp" alt="">
+  <div class="name">John Doe</div>
+  <div class="desc">ETE, 2021-2025</div>
+  <button class="btn-primary"><a href="">View Profile</a></button>
+</div>
+
+
+</div>
+
+</section>
+
+<footer>
+  <div class="mobile-nav">
+    <ul>
+      <li><a href="feed.html"><i class="fas fa-rss"></i></a></li>
+      <li><a href="friends.html"><i class="fas fa-users"></i></a></li>
+      
+<!-- HTML code for the popup -->
+<div x-data="{ open: false }">
+  <!-- Button to open the popup -->
+  <li @click="open = true"><i class="fas fa-plus-circle" style="font-size: 2.5em;"></i></li>
+  
+  <!-- Popup container -->
+  <div x-show="open" class="popup" @click.away="open = false">
+    <!-- Popup content -->
+    <div class="popup-content">
+     <form action="" class="addpost">
+       <!-- Heading -->
+       <h2>Add Post</h2>
+       <!-- File input -->
+       <div>
+         <label for="file">File:</label>
+         <input type="file" id="file" name="file">
+       </div>
+       <!-- Caption input -->
+       <div>
+         <label for="caption">Caption:</label>
+         <input type="text" id="caption" name="caption">
+       </div>
+       <!-- Add Post button -->
+       <button>Add Post</button>
+       <!-- Close button -->
+       <!-- <button @click="open = false">Close</button> -->
+     </form>
+    </div>
+  </div>
+</div>
+      <li><a href="events.html"><i class="fas fa-calendar-alt"></i></a></li>
+      <li><a href="showcase.html"><i class="fas fa-images"></i></a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+
+
+</html>

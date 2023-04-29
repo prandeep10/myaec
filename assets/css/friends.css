@@ -1,0 +1,77 @@
+.friends-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    flex-direction: column;
+}
+
+
+.search-bar{
+    padding: 10px;
+    background: rgba(202, 201, 201, 0.329);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-bar form input{
+    padding: 5px;
+}
+
+.profile-card-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px;
+}
+
+.profile-card{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: rgba(128, 128, 128, 0.476);
+    width: 400px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.profile-card img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.friend-card{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+    background: rgba(128, 128, 128, 0.268);
+    border-radius: 10px;
+}
+.friend-card .nd{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.friend-card img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.profile-card .desc{
+    margin-bottom: 10px;
+}
+
+@media(max-width:700px){
+    .profile-card{
+        width: 290px;
+    }
+}
+

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyAEC</title>
+
+    <!-- Custom CSS  -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/feed.css">
+    <link rel="stylesheet" href="assets/css/events.css">
+
+    <!-- FontAwesome CDN  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Alpine JS CDN  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <h1>MyAEC</h1>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="feed.html">Feed</a></li>
+                    <li><a href="friends.html">Friends</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="showcase.html">Showcase</a></li>
+                </ul>
+            </div>
+
+            <div class="buttons">
+
+              
+<!-- HTML code for the popup -->
+<span x-data="{ open: false }">
+  <button class="btn-primary" @click="open = true">
+    <a href="#">Login</a>
+  </button>
+  
+  <!-- Popup container -->
+  <div x-show="open" class="popup" @click.away="open = false">
+    <!-- Popup content -->
+    <div class="popup-content">
+      <!-- Heading -->
+      <h2>Login to MyAEC</h2>
+      
+      <!-- Login form -->
+      <form>
+        <!-- Email input -->
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email">
+        </div>
+        
+        <!-- Password input -->
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password">
+        </div>
+        
+        <!-- Login button -->
+        <button type="submit">Login</button>
+      </form>
+      
+      <!-- Close button -->
+      <button class="close-btn" @click="open = false">Close</button>
+    </div>
+  </div>
+</span>
+    
+                <button class="notice-btn">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-bell fa-stack-1x"></i>
+                        <span class="badge badge-danger badge-counter">3+</span>
+                    </span>
+                </button>
+
+            </div>
+        </nav>
+    </header>
+
+    <section class="events-section">
+
+        <div class="container">
+            <h1>Upcoming Events</h1>
+    
+    
+            
+            <div class="event">
+                <img src="admin/uploads/" alt="Event 1">
+                <div>
+                    <h2>MyAEC Memories</h2>
+                    <p>Upload your AEC Memories as photos and use hashtag #myaec.</p>
+                    <p class="date"> 17/4/2021 , 3 PM</p>
+                </div>
+            </div>
+    
+            
+            <div class="event">
+                <img src="admin/uploads/" alt="Event 1">
+                <div>
+                    <h2>Codewar Final</h2>
+                    <p>Codewar 4.0 2023, Final Round in ETE Department of Assam Engineering College.</p>
+                    <p class="date"> 17/4/2021 , 3 PM</p>
+                </div>
+            </div>
+    
+            
+            <div class="event">
+                <img src="admin/uploads/aw8cs0b_1641701.jpg" alt="Event 1">
+                <div>
+                    <h2>dd</h2>
+                    <p>dd</p>
+                    <p class="date"> 2023-03-17 , 15:47</p>
+                </div>
+            </div>
+    
+            
+        </div>
+    
+    
+    </section>
+
+
+<footer>
+  <div class="mobile-nav">
+    <ul>
+      <li><a href="feed.html"><i class="fas fa-rss"></i></a></li>
+      <li><a href="friends.html"><i class="fas fa-users"></i></a></li>
+      
+<!-- HTML code for the popup -->
+<div x-data="{ open: false }">
+  <!-- Button to open the popup -->
+  <li @click="open = true"><i class="fas fa-plus-circle" style="font-size: 2.5em;"></i></li>
+  
+  <!-- Popup container -->
+  <div x-show="open" class="popup" @click.away="open = false">
+    <!-- Popup content -->
+    <div class="popup-content">
+     <form action="" class="addpost">
+       <!-- Heading -->
+       <h2>Add Post</h2>
+       <!-- File input -->
+       <div>
+         <label for="file">File:</label>
+         <input type="file" id="file" name="file">
+       </div>
+       <!-- Caption input -->
+       <div>
+         <label for="caption">Caption:</label>
+         <input type="text" id="caption" name="caption">
+       </div>
+       <!-- Add Post button -->
+       <button>Add Post</button>
+       <!-- Close button -->
+       <!-- <button @click="open = false">Close</button> -->
+     </form>
+    </div>
+  </div>
+</div>
+      <li><a href="events.html"><i class="fas fa-calendar-alt"></i></a></li>
+      <li><a href="showcase.html"><i class="fas fa-images"></i></a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+
+
+</html>

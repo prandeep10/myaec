@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website</title>
+  <style>
+    /* Basic styling for the navigation menu */
+    nav {
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </nav>
+  
+  <div id="content"></div>
+  
+  <script>
+    // Handle navigation using JavaScript
+    const links = document.querySelectorAll('nav a');
+    links.forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const url = link.getAttribute('href');
+        fetch(url)
+          .then(response => response.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const newDoc = parser.parseFromString(html, 'text/html');
+            document.querySelector('#content').innerHTML = newDoc.querySelector('body').innerHTML;
+          });
+        window.history.pushState(null, null, url);
+      });
+    });
+    
+    // Load the initial content based on the current URL
+    const path = window.location.pathname;
+    const url = path === '/' ? 'index.html' : `${path}.html`;
+    fetch(url)
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const newDoc = parser.parseFromString(html, 'text/html');
+        document.querySelector('#content').innerHTML = newDoc.querySelector('body').innerHTML;
+      });
+    
+    // Update the content when the user navigates using the back and forward buttons
+    window.addEventListener('popstate', () => {
+      const path = window.location.pathname;
+      const url = path === '/' ? 'index.html' : `${path}.html`;
+      fetch(url)
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const newDoc = parser.parseFromString(html, 'text/html');
+          document.querySelector('#content').innerHTML = newDoc.querySelector('body').innerHTML;
+        });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyAEC</title>
+
+    <!-- Custom CSS  -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/feed.css">
+    <link rel="stylesheet" href="assets/css/showcase.css">
+
+    <!-- FontAwesome CDN  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- Alpine JS CDN  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+    </style>
+</head>
+
+
+<body>
+  <header>
+    <nav class="navbar">
+        <div class="brand">
+            <h1>MyAEC</h1>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="feed.html">Feed</a></li>
+                <li><a href="friends.html">Friends</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="showcase.html">Showcase</a></li>
+            </ul>
+        </div>
+
+        <div class="buttons">
+
+          
+<!-- HTML code for the popup -->
+<span x-data="{ open: false }">
+<button class="btn-primary" @click="open = true">
+<a href="#">Login</a>
+</button>
+
+<!-- Popup container -->
+<div x-show="open" class="popup" @click.away="open = false">
+<!-- Popup content -->
+<div class="popup-content">
+  <!-- Heading -->
+  <h2>Login to MyAEC</h2>
+  
+  <!-- Login form -->
+  <form>
+    <!-- Email input -->
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+    </div>
+    
+    <!-- Password input -->
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+    </div>
+    
+    <!-- Login button -->
+    <button type="submit">Login</button>
+  </form>
+  
+  <!-- Close button -->
+  <button class="close-btn" @click="open = false">Close</button>
+</div>
+</div>
+</span>
+
+            <button class="notice-btn">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-bell fa-stack-1x"></i>
+                    <span class="badge badge-danger badge-counter">3+</span>
+                </span>
+            </button>
+
+        </div>
+    </nav>
+</header>
+
+
+   
+
+    <section class="showcase">
+        <h2>MyAEC Memories</h2>
+        <div class="container">
+            <div id="carousel">
+                <figure><img src="https://source.unsplash.com/random/1920x1080/?wallpaper" alt=""></figure>
+                <figure><img src="https://source.unsplash.com/random/1920x1080/?sea" alt=""></figure>
+                <figure><img src="https://source.unsplash.com/random/1920x1080/?river" alt=""></figure>
+                <figure><img src="https://source.unsplash.com/random/1920x1080/?rain,landscape" alt=""></figure>
+                <figure><img src="https://source.unsplash.com/random/1920x1080/?hill,landscape" alt=""></figure>
+
+                <figure><img src="https://source.unsplash.com/random/1920x1080/?tree,landscape" alt=""></figure>
+                <figure><img src="https://source.unsplash.com/random/1920x1080/?city,landscape" alt=""></figure>
+                <figure><img src="https://source.unsplash.com/random/1920x1080/?mountain,landscape" alt=""></figure>
+                <figure><img src="https://source.unsplash.com/random/1920x1080/?people,landscape" alt=""></figure>
+                
+              
+            </div>
+        </div>
+
+       <script>
+        (function() {
+            var initPhotoSwipeFromDOM;
+          
+            initPhotoSwipeFromDOM = function(gallerySelector) {
+              var closest, galleryElements, hashData, i, l, onThumbnailsClick, openPhotoSwipe, parseThumbnailElements, photoswipeParseHash;
+              parseThumbnailElements = function(el) {
+                var figureEl, i, item, items, linkEl, numNodes, size, thumbElements;
+                thumbElements = el.childNodes;
+                numNodes = thumbElements.length;
+                items = [];
+                figureEl = void 0;
+                linkEl = void 0;
+                size = void 0;
+                item = void 0;
+                i = 0;
+                while (i < numNodes) {
+                  figureEl = thumbElements[i];
+                  if (figureEl.nodeType !== 1) {
+                    i++;
+                    continue;
+                  }
+                  linkEl = figureEl.children[0];
+                  size = linkEl.getAttribute('data-size').split('x');
+                  item = {
+                    src: linkEl.getAttribute('href'),
+                    w: parseInt(size[0], 10),
+                    h: parseInt(size[1], 10)
+                  };
+                  if (figureEl.children.length > 1) {
+                    item.title = figureEl.children[1].innerHTML;
+                  }
+                  if (linkEl.children.length > 0) {
+                    item.msrc = linkEl.children[0].getAttribute('src');
+                  }
+                  item.el = figureEl;
+                  items.push(item);
+                  i++;
+                }
+                return items;
+              };
+              closest = function(el, fn) {
+                return el && (fn(el) ? el : closest(el.parentNode, fn));
+              };
+              onThumbnailsClick = function(e) {
+                var childNodes, clickedGallery, clickedListItem, eTarget, i, index, nodeIndex, numChildNodes;
+                e = e || window.event;
+                if (e.preventDefault) {
+                  e.preventDefault();
+                } else {
+                  e.returnValue = false;
+                }
+                eTarget = e.target || e.srcElement;
+                clickedListItem = closest(eTarget, function(el) {
+                  return el.tagName && el.tagName.toUpperCase() === 'FIGURE';
+                });
+                if (!clickedListItem) {
+                  return;
+                }
+                clickedGallery = clickedListItem.parentNode;
+                childNodes = clickedListItem.parentNode.childNodes;
+                numChildNodes = childNodes.length;
+                nodeIndex = 0;
+                index = void 0;
+                i = 0;
+                while (i < numChildNodes) {
+                  if (childNodes[i].nodeType !== 1) {
+                    i++;
+                    continue;
+                  }
+                  if (childNodes[i] === clickedListItem) {
+                    index = nodeIndex;
+                    break;
+                  }
+                  nodeIndex++;
+                  i++;
+                }
+                if (index >= 0) {
+                  openPhotoSwipe(index, clickedGallery);
+                }
+                return false;
+              };
+              photoswipeParseHash = function() {
+                var hash, i, pair, params, vars;
+                hash = window.location.hash.substring(1);
+                params = {};
+                if (hash.length < 5) {
+                  return params;
+                }
+                vars = hash.split('&');
+                i = 0;
+                while (i < vars.length) {
+                  if (!vars[i]) {
+                    i++;
+                    continue;
+                  }
+                  pair = vars[i].split('=');
+                  if (pair.length < 2) {
+                    i++;
+                    continue;
+                  }
+                  params[pair[0]] = pair[1];
+                  i++;
+                }
+                if (params.gid) {
+                  params.gid = parseInt(params.gid, 10);
+                }
+                return params;
+              };
+              openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+                var gallery, items, j, options, pswpElement;
+                pswpElement = document.querySelectorAll('.pswp')[0];
+                gallery = void 0;
+                options = void 0;
+                items = void 0;
+                items = parseThumbnailElements(galleryElement);
+                options = {
+                  galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+                  getThumbBoundsFn: function(index) {
+                    var pageYScroll, rect, thumbnail;
+                    thumbnail = items[index].el.getElementsByTagName('img')[0];
+                    pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+                    rect = thumbnail.getBoundingClientRect();
+                    return {
+                      x: rect.left,
+                      y: rect.top + pageYScroll,
+                      w: rect.width
+                    };
+                  }
+                };
+                if (fromURL) {
+                  if (options.galleryPIDs) {
+                    j = 0;
+                    while (j < items.length) {
+                      if (items[j].pid === index) {
+                        options.index = j;
+                        break;
+                      }
+                      j++;
+                    }
+                  } else {
+                    options.index = parseInt(index, 10) - 1;
+                  }
+                } else {
+                  options.index = parseInt(index, 10);
+                }
+                if (isNaN(options.index)) {
+                  return;
+                }
+                if (disableAnimation) {
+                  options.showAnimationDuration = 0;
+                }
+                gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+                gallery.init();
+              };
+              galleryElements = document.querySelectorAll(gallerySelector);
+              i = 0;
+              l = galleryElements.length;
+              while (i < l) {
+                galleryElements[i].setAttribute('data-pswp-uid', i + 1);
+                galleryElements[i].onclick = onThumbnailsClick;
+                i++;
+              }
+              hashData = photoswipeParseHash();
+              if (hashData.pid && hashData.gid) {
+                openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true);
+              }
+            };
+          
+            initPhotoSwipeFromDOM('.gallery');
+          
+          }).call(this);
+       </script>
+    </section>
+
+
+    <footer>
+        <div class="mobile-nav">
+            <ul>
+                <li><i class="fas fa-rss"></i></li>
+                <li><i class="fas fa-users"></i></li>
+                <li><i class="fas fa-plus-circle" style="font-size: 2.5em;"></i></li>
+                <li><i class="fas fa-calendar-alt"></i></li>
+                <li><i class="fas fa-images"></i></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+
+</html>
